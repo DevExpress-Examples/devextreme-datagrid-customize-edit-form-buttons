@@ -5,18 +5,18 @@
 <!-- default badges end -->
 # DataGrid for DevExtreme - How to customize built-in Edit Form buttons and add a custom button
 
-This example demonstrates how to display the customized **Save** and **Cancel** buttons in [Form](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#User_Interaction/Form_Mode) and [Popup](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#User_Interaction/Popup_Mode) editing modes. This solution also adds a custom button.
+This example demonstrates how to display the customized **Save** and **Cancel** buttons in [Form](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#User_Interaction/Form_Mode) and [Popup](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#User_Interaction/Popup_Mode) edit modes. This solution also adds a custom button.
 
 | Popup | Form |
 | ------------- | ------------- |
 | ![CustomButtons-Popup](https://user-images.githubusercontent.com/13280527/235660079-40328312-a4aa-45d9-a938-52f50f967de5.png)  | ![CustomButtons-Form](https://user-images.githubusercontent.com/13280527/235659846-246a4c15-0acf-4f55-8d0f-ba279604483c.png)  |
 
 ## Implementation details
-It is necessary to replace the built-in Save and Cancel buttons. The solutions for Popup and Form editing modes are different.
+It is necessary to replace built-in Save and Cancel buttons. The solutions for Popup and Form edit modes are different.
 
-**Popup**: use the [DataGrid.Editing.Popup.toolbarItems](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/) array to define all the required buttons. These items will overwrite the built-in Save and Cancel buttons.
+**Popup**: use the [DataGrid.Editing.Popup.toolbarItems](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/) array to define all required buttons. These items will overwrite built-in Save and Cancel buttons.
 
-**Form**: add a [SimpleItem](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxForm/Item_Types/SimpleItem/) with a template. Place the [Toolbar component](https://js.devexpress.com/Documentation/Guide/UI_Components/Toolbar/Getting_Started_with_Toolbar/) in this template and define the required buttons in this toolbar. Use CSS to hide the built-in Save and Cancel buttons:
+**Form**: add a [SimpleItem](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxForm/Item_Types/SimpleItem/) with a template. Place the [Toolbar component](https://js.devexpress.com/Documentation/Guide/UI_Components/Toolbar/Getting_Started_with_Toolbar/) in this template and define the required buttons in this toolbar. Use CSS to hide built-in Save and Cancel buttons:
 ```css
 #gridForm .dx-datagrid-form-buttons-container {  
     display: none  
