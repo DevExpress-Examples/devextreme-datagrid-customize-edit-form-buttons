@@ -1,0 +1,34 @@
+<div class="demo-header">
+    <h3>DataGrid - Customize action buttons in editing Popup and Form</h3>
+</div>
+@(Html.DevExtreme().TabPanel()
+    .Items(tabs => {
+        tabs.Add().Title("Popup")
+            .Template(@<text>
+                <div>
+                    @(await Html.PartialAsync("../PartialViews/DataGridPopup"))
+                    </div>
+                </text>);
+        tabs.Add().Title("Form")
+            .Template(@<text>
+                <div>
+                    @(await Html.PartialAsync("../PartialViews/DataGridForm"))
+                    </div>
+                </text>);
+    })
+)
+<script>
+    function copyDataClick(gridId) {
+        const grid = $("#" + gridId).dxDataGrid("instance");
+        const rowKey = grid.option("editing.editRowKey");
+        const rowIndex = grid.getRowIndexByKey(rowKey);
+        const name = grid.cellValue(rowIndex, "FirstName");
+        const message = name ? name + "'s " : "";
+        DevExpress.ui.notify(`Copy ${message}data`);
+    }
+</script>
+<style>
+    #gridForm .dx-datagrid-form-buttons-container {
+        display: none
+    }
+</style>
