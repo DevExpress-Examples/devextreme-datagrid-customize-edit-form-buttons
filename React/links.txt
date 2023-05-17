@@ -1,0 +1,7 @@
+https://github.com/DevExpress-Examples/devextreme-datagrid-customize-edit-form-buttons
+
+https://trello.com/c/in6Pt7dq/1055-form-in-datagrid-redefine-buttons-for-editing-form-and-popup-react
+
+https://codepen.io/AndrewSer/pen/eYPdmrp?editors=0010
+
+https://codepen.io/AndrewSer/pen/bGmwNmZ?editors=0010
