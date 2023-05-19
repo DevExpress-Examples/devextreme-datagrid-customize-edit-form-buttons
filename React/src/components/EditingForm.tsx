@@ -3,44 +3,50 @@ import DataGrid, { Editing, Form, Paging } from "devextreme-react/data-grid";
 import { Item } from 'devextreme-react/form';
 import { ClickEvent } from "devextreme/ui/button";
 import notify from "devextreme/ui/notify";
-import { useCallback, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import service from "../data";
 
 const employees = service.getData();
 
 function EditingForm(){
-    const grid = useRef(null);
+    const grid = useRef<DataGrid>(null);
     const saveButtonClick = useCallback((e:ClickEvent) => {
-        (grid.current as any).instance.saveEditData();
+        grid.current!.instance.saveEditData();
     },[])
-    const saveOptions = {
-        type: 'success',
-        stylingMode: 'outlined',
-        text:'Save',
-        onClick: saveButtonClick,
-    }
+    const saveOptions = useMemo(() => {
+        return {
+            type: 'success',
+            stylingMode: 'outlined',
+            text:'Save',
+            onClick: saveButtonClick,
+        }
+    }, [saveButtonClick])
     const cancelButtonClick = useCallback((e:ClickEvent)=>{
-        (grid.current as any).instance.cancelEditData();
+        grid.current!.instance.cancelEditData();
     }, [])
-    const cancelOptions = {
-        type: 'danger',
-        stylingMode: 'outlined',
-        text:'Cancel',
-        onClick: cancelButtonClick,
-    }
+    const cancelOptions = useMemo(() => {
+        return {
+            type: 'danger',
+            stylingMode: 'outlined',
+            text:'Cancel',
+            onClick: cancelButtonClick,
+        }
+    }, [cancelButtonClick]);
     const copyButtonClick = useCallback((e:ClickEvent) => {
-        const gridInstance = (grid.current as any).instance;
+        const gridInstance = grid.current!.instance;
         const rowKey = gridInstance.option("editing.editRowKey");
         const rowIndex = gridInstance.getRowIndexByKey(rowKey);
         const name = gridInstance.cellValue(rowIndex, "FirstName");
         const message = name ? name+"'s ":"";
         notify(`Copy ${message}data`);
     }, []);
-    const copyOptions = {
-        text: "Copy Data",
-        stylingMode: "outlined",
-        onClick: copyButtonClick,
-    }
+    const copyOptions = useMemo(() => {
+        return {
+            text: "Copy Data",
+            stylingMode: "outlined",
+            onClick: copyButtonClick,
+        }
+    }, [copyButtonClick]);
 
     const formToolbar = () => {
         return(<Toolbar>
