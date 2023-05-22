@@ -1,7 +1,7 @@
 import DataGrid, { Editing, Paging, Popup } from "devextreme-react/data-grid";
 import { ToolbarItem } from "devextreme-react/popup";
 import { ClickEvent } from "devextreme/ui/button";
-import { useCallback, useRef, useMemo } from "react";
+import { useRef, useMemo } from "react";
 import service from "../data";
 
 import notify from "devextreme/ui/notify";
@@ -10,43 +10,40 @@ const employees = service.getData();
 
 function EditingPopup(){
     const grid = useRef<DataGrid>(null);
-    const saveButtonClick = useCallback((e:ClickEvent) => {
-        grid.current!.instance.saveEditData();
-    },[])
     const saveOptions = useMemo(() => {
         return {
             type: 'success',
             stylingMode: 'outlined',
             text:'Save',
-            onClick: saveButtonClick,
+            onClick: (e:ClickEvent) => {
+                grid.current!.instance.saveEditData();
+            },
         }
-    }, [saveButtonClick])
-    const cancelButtonClick = useCallback((e:ClickEvent)=>{
-        grid.current!.instance.cancelEditData();
     }, [])
     const cancelOptions = useMemo(() => {
         return {
             type: 'danger',
             stylingMode: 'outlined',
             text:'Cancel',
-            onClick: cancelButtonClick,
+            onClick: (e:ClickEvent)=>{
+                grid.current!.instance.cancelEditData();
+            },
         }
-    }, [cancelButtonClick]);
-    const copyButtonClick = useCallback((e:ClickEvent) => {
-        const gridInstance = grid.current!.instance;
-        const rowKey = gridInstance.option("editing.editRowKey");
-        const rowIndex = gridInstance.getRowIndexByKey(rowKey);
-        const name = gridInstance.cellValue(rowIndex, "FirstName");
-        const message = name ? name+"'s ":"";
-        notify(`Copy ${message}data`);
     }, []);
     const copyOptions = useMemo(() => {
         return {
             text: "Copy Data",
             stylingMode: "outlined",
-            onClick: copyButtonClick,
+            onClick: (e:ClickEvent) => {
+                const gridInstance = grid.current!.instance;
+                const rowKey = gridInstance.option("editing.editRowKey");
+                const rowIndex = gridInstance.getRowIndexByKey(rowKey);
+                const name = gridInstance.cellValue(rowIndex, "FirstName");
+                const message = name ? name+"'s ":"";
+                notify(`Copy ${message}data`);
+            },
         }
-    }, [copyButtonClick]);
+    }, []);
 
     return(<DataGrid
         ref={grid}

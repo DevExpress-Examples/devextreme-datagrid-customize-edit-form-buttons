@@ -10,45 +10,42 @@ const employees = service.getData();
 
 function EditingForm(){
     const grid = useRef<DataGrid>(null);
-    const saveButtonClick = useCallback((e:ClickEvent) => {
-        grid.current!.instance.saveEditData();
-    },[])
     const saveOptions = useMemo(() => {
         return {
             type: 'success',
             stylingMode: 'outlined',
             text:'Save',
-            onClick: saveButtonClick,
+            onClick: (e:ClickEvent) => {
+                grid.current!.instance.saveEditData();
+            },
         }
-    }, [saveButtonClick])
-    const cancelButtonClick = useCallback((e:ClickEvent)=>{
-        grid.current!.instance.cancelEditData();
     }, [])
     const cancelOptions = useMemo(() => {
         return {
             type: 'danger',
             stylingMode: 'outlined',
             text:'Cancel',
-            onClick: cancelButtonClick,
+            onClick: (e:ClickEvent)=>{
+                grid.current!.instance.cancelEditData();
+            },
         }
-    }, [cancelButtonClick]);
-    const copyButtonClick = useCallback((e:ClickEvent) => {
-        const gridInstance = grid.current!.instance;
-        const rowKey = gridInstance.option("editing.editRowKey");
-        const rowIndex = gridInstance.getRowIndexByKey(rowKey);
-        const name = gridInstance.cellValue(rowIndex, "FirstName");
-        const message = name ? name+"'s ":"";
-        notify(`Copy ${message}data`);
     }, []);
     const copyOptions = useMemo(() => {
         return {
             text: "Copy Data",
             stylingMode: "outlined",
-            onClick: copyButtonClick,
+            onClick: (e:ClickEvent) => {
+                const gridInstance = grid.current!.instance;
+                const rowKey = gridInstance.option("editing.editRowKey");
+                const rowIndex = gridInstance.getRowIndexByKey(rowKey);
+                const name = gridInstance.cellValue(rowIndex, "FirstName");
+                const message = name ? name+"'s ":"";
+                notify(`Copy ${message}data`);
+            },
         }
-    }, [copyButtonClick]);
+    }, []);
 
-    const formToolbar = () => {
+    const formToolbar = useCallback(() => {
         return(<Toolbar>
             <ToolbarItem
                 widget="dxButton"
@@ -66,7 +63,7 @@ function EditingForm(){
                 options={copyOptions}>
             </ToolbarItem>
         </Toolbar>);
-    }
+    }, [saveOptions, cancelOptions, copyOptions]);
 
     return(<DataGrid
         ref={grid}
