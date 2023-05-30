@@ -1,0 +1,8 @@
+.main {
+  margin: 50px 50px;
+  width: 90vh;
+}
+
+#gridForm .dx-datagrid-form-buttons-container {  
+  display: none  
+}
