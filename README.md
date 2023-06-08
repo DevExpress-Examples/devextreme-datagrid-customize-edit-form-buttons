@@ -32,6 +32,11 @@ It is necessary to replace built-in Save and Cancel buttons. The solutions for P
 	- [DataGridForm.cshtml](<ASP.NET Core/Views/PartialViews/DataGridForm.cshtml>)
 	- [DataGridPopup.cshtml](<ASP.NET Core/Views/PartialViews/DataGridPopup.cshtml>)
 	- [Index.cshtml](<ASP.NET Core/Views/Home/Index.cshtml>)
+- **Angular**
+	- [grid-form.component.html](Angular/src/app/grid-form/grid-form.component.html)
+	- [grid-form.component.ts](Angular/src/app/grid-form/grid-form.component.ts)
+	- [grid-popup.component.html](Angular/src/app/grid-popup/grid-popup.component.html)
+	- [grid-popup.component.ts](Angular/src/app/grid-popup/grid-popup.component.ts)
 - **React**
 	- [EditingForm.tsx](React/src/components/EditingForm.tsx)
 	- [EditingForm.tsx](React/src/components/EditingPopup.tsx)
