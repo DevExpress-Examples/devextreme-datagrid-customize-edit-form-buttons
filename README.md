@@ -47,3 +47,4 @@ It is necessary to replace built-in Save and Cancel buttons. The solutions for P
 ## Documentation
 
 - [DataGrid Form](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/#form)
+- [Save, Cancel, and Custom Buttons](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#Customize_Edit_Form/Save_Cancel_and_Custom_Buttons)
