@@ -1,50 +1,58 @@
 <!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/340354634/25.1.2%2B)
-[![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T1129779)
+![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/635287424/22.2.3%2B)
+[![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T1163556)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-# DevExtreme Examples Template
+# DataGrid for DevExtreme - How to customize built-in Edit Form buttons and add a custom button
 
-This is the repository template for creating new examples. 
+This example demonstrates how to display the customized **Save** and **Cancel** buttons in [Form](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#User_Interaction/Form_Mode) and [Popup](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#User_Interaction/Popup_Mode) edit modes. This solution also adds a custom button.
 
-Use **_Product_ for DevExtreme - _Task_** template for a title. 
+| Popup | Form |
+| ------------- | ------------- |
+| ![CustomButtons-Popup](https://user-images.githubusercontent.com/13280527/235660079-40328312-a4aa-45d9-a938-52f50f967de5.png)  | ![CustomButtons-Form](https://user-images.githubusercontent.com/13280527/235659846-246a4c15-0acf-4f55-8d0f-ba279604483c.png)  |
 
-Describe the solved task in this section.
+## Implementation details
+It is necessary to replace built-in Save and Cancel buttons. The solutions for Popup and Form edit modes are different.
 
-Put a screenshot/gif that illustrates the result here.
+**Popup**: use the [DataGrid.Editing.Popup.toolbarItems](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/) array to define all required buttons. These items will overwrite built-in Save and Cancel buttons.
 
-Then, add implementation details (steps, code snippets, and other technical information in a free form), or add a link to an existing document with implementation details. 
+**Form**: add a [SimpleItem](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxForm/Item_Types/SimpleItem/) with a template. Place the [Toolbar component](https://js.devexpress.com/Documentation/Guide/UI_Components/Toolbar/Getting_Started_with_Toolbar/) in this template and define the required buttons in this toolbar. Use CSS to hide built-in Save and Cancel buttons:
+```css
+#gridForm .dx-datagrid-form-buttons-container {  
+    display: none  
+}
+```
 
 ## Files to Review
 
 - **jQuery**
-    - [index.js](jQuery/src/index.js)
-- **Angular**
-    - [app.component.html](Angular/src/app/app.component.html)
-    - [app.component.ts](Angular/src/app/app.component.ts)
-- **Vue**
-    - [Home.vue](Vue/src/components/HomeContent.vue)
-- **React**
-    - [App.tsx](React/src/App.tsx)
+	- [EditingForm.js](jQuery/src/EditingForm.js)
+	- [EditingPopup.js](jQuery/src/EditingPopup.js)
 - **NetCore**    
-    - [Index.cshtml](ASP.NET%20Core/Views/Home/Index.cshtml)
+	- [DataGridForm.cshtml](<ASP.NET Core/Views/PartialViews/DataGridForm.cshtml>)
+	- [DataGridPopup.cshtml](<ASP.NET Core/Views/PartialViews/DataGridPopup.cshtml>)
+	- [Index.cshtml](<ASP.NET Core/Views/Home/Index.cshtml>)
+- **Angular**
+	- [grid-form.component.html](Angular/src/app/grid-form/grid-form.component.html)
+	- [grid-form.component.ts](Angular/src/app/grid-form/grid-form.component.ts)
+	- [grid-popup.component.html](Angular/src/app/grid-popup/grid-popup.component.html)
+	- [grid-popup.component.ts](Angular/src/app/grid-popup/grid-popup.component.ts)
+- **React**
+	- [EditingForm.tsx](React/src/components/EditingForm.tsx)
+	- [EditingForm.tsx](React/src/components/EditingPopup.tsx)
+- **Vue**
+	- [GridForm.vue](Vue/src/components/GridForm.vue)
+	- [GridPopup.vue](Vue/src/components/GridPopup.vue)
 
 ## Documentation
 
-- link
-- link
-- ...
-
-## More Examples
-
-- link
-- link
-- ...
+- [DataGrid Form](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/#form)
+- [Save, Cancel, and Custom Buttons](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#Customize_Edit_Form/Save_Cancel_and_Custom_Buttons)
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
 
-[<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-examples-template&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-examples-template&~~~was_helpful=no)
+[<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-datagrid-customize-edit-form-buttons&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-datagrid-customize-edit-form-buttons&~~~was_helpful=no)
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->

@@ -1,0 +1,56 @@
+﻿@(
+Html.DevExtreme().DataGrid()
+    .ID("gridForm")
+    .DataSource(new JS("getEmployees()"))
+    .KeyExpr("ID")
+    .ShowBorders(true)
+    .Paging(p => p.Enabled(false))
+    .Editing(ed => ed
+        .AllowAdding(true)
+        .AllowDeleting(true)
+        .AllowUpdating(true)
+        .Mode(GridEditMode.Form)
+        .Form(form => form.ColCount(2)
+            .Items(items => {
+                items.AddSimple().DataField("Prefix");
+                items.AddSimple().DataField("FirstName");
+                items.AddSimple().DataField("LastName");
+                items.AddSimple().DataField("Position");
+                items.AddSimple().DataField("Address");
+                items.AddSimple().DataField("BirthDate");
+                items.AddSimple().ColSpan(2).Template(@<text>
+                    @Html.DevExtreme().Toolbar().Items(toolbarItems => {
+                        toolbarItems.Add().Location(ToolbarItemLocation.After)
+                            .Widget(w => w.Button()
+                                .Type(ButtonType.Success)
+                                .StylingMode(ButtonStylingMode.Outlined)
+                                .Text("Save")
+                                .OnClick("function() { $('#gridForm').dxDataGrid('instance').saveEditData(); }")
+                        );
+                        toolbarItems.Add().Location(ToolbarItemLocation.After)
+                            .Widget(w => w.Button()
+                                .Type(ButtonType.Danger)
+                                .StylingMode(ButtonStylingMode.Outlined)
+                                .Text("Cancel")
+                                .OnClick("function() { $('#gridForm').dxDataGrid('instance').cancelEditData(); }")
+                        );
+                        toolbarItems.Add().Location(ToolbarItemLocation.Before)
+                            .Widget(w => w.Button()
+                                .StylingMode(ButtonStylingMode.Outlined)
+                                .Text("Copy Data")
+                                .OnClick("() => copyDataClick('gridForm')")
+                        );
+                    })
+                </text>);
+            })
+        )
+    )
+    .Columns(columns => {
+        columns.Add().DataField("Prefix").Caption("Title").Width(80);
+        columns.Add().DataField("FirstName");
+        columns.Add().DataField("LastName");
+        columns.Add().DataField("Position").Width(130);
+        columns.Add().DataField("Address");
+        columns.Add().DataField("BirthDate").DataType(GridColumnDataType.Date).Width(125);
+    })
+)
