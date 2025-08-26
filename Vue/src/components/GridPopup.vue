@@ -12,11 +12,12 @@ const successButtonOptions = {
   stylingMode: 'outlined',
   text: 'Save',
   onClick: (): void => {
-    if (dataGridRef.value?.instance) {
-      dataGridRef.value.instance.saveEditData().catch((error: unknown) => {
-        console.error('Save error:', error);
-      });
-    }
+    const instance = dataGridRef.value?.instance;
+    if (!instance) return;
+
+    instance.saveEditData().catch((error: unknown) => {
+      console.error('Save error:', error);
+    });
   }
 };
 const cancelButtonOptions = {
@@ -24,22 +25,24 @@ const cancelButtonOptions = {
   stylingMode: 'outlined',
   text: 'Cancel',
   onClick: (): void => {
-    if (dataGridRef.value?.instance) {
-      dataGridRef.value.instance.cancelEditData();
-    }
+    const instance = dataGridRef.value?.instance;
+    if (!instance) return;
+
+    instance.cancelEditData();
   }
 };
 const copyButtonOptions = {
   text: 'Copy Data',
   stylingMode: 'outlined',
   onClick: (): void => {
-    if (dataGridRef.value?.instance) {
-      const rowKey = dataGridRef.value.instance.option('editing.editRowKey');
-      const rowIndex = dataGridRef.value.instance.getRowIndexByKey(rowKey);
-      const name = dataGridRef.value.instance.cellValue(rowIndex, 'FirstName');
-      const message = name ? `${name}'s ` : '';
-      notify(`Copy ${message}data`);
-    }
+    const instance = dataGridRef.value?.instance;
+    if (!instance) return;
+
+    const rowKey = instance.option('editing.editRowKey');
+    const rowIndex = instance.getRowIndexByKey(rowKey);
+    const name = instance.cellValue(rowIndex, 'FirstName');
+    const message = name ? `${name}'s ` : '';
+    notify(`Copy ${message}data`);
   }
 };
 </script>
