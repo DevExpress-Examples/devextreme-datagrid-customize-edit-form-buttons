@@ -26,11 +26,12 @@ export class GridPopupComponent {
       stylingMode: 'outlined',
       text: 'Save',
       onClick: (): void => {
-        if (this.dataGrid) {
-          this.dataGrid.instance.saveEditData().catch((error: unknown) => {
-            console.error('Save error:', error);
-          });
-        }
+        const instance = this.dataGrid?.instance;
+        if (!instance) return;
+
+        instance.saveEditData().catch((error: unknown) => {
+          console.error('Save error:', error);
+        });
       },
     };
 
@@ -39,9 +40,10 @@ export class GridPopupComponent {
       stylingMode: 'outlined',
       text: 'Cancel',
       onClick: (): void => {
-        if (this.dataGrid) {
-          this.dataGrid.instance.cancelEditData();
-        }
+        const instance = this.dataGrid?.instance;
+        if (!instance) return;
+
+        instance.cancelEditData();
       },
     };
 
@@ -49,13 +51,14 @@ export class GridPopupComponent {
       text: 'Copy Data',
       stylingMode: 'outlined',
       onClick: (): void => {
-        if (this.dataGrid) {
-          const rowKey = this.dataGrid.instance.option('editing.editRowKey');
-          const rowIndex = this.dataGrid.instance.getRowIndexByKey(rowKey);
-          const name = this.dataGrid.instance.cellValue(rowIndex, 'FirstName');
-          const message = name ? `${name}'s ` : '';
-          notify(`Copy ${message}data`);
-        }
+        const instance = this.dataGrid?.instance;
+        if (!instance) return;
+
+        const rowKey = instance.option('editing.editRowKey');
+        const rowIndex = instance.getRowIndexByKey(rowKey);
+        const name = instance.cellValue(rowIndex, 'FirstName');
+        const message = name ? `${name}'s ` : '';
+        notify(`Copy ${message}data`);
       },
     };
   }
