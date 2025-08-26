@@ -1,7 +1,8 @@
-﻿@(
+@using ASP_NET_Core.Models
+@(
 Html.DevExtreme().DataGrid()
     .ID("gridPopup")
-    .DataSource(new JS("getEmployees()"))
+    .DataSource(EmployeeData.Employees)
     .KeyExpr("ID")
     .ShowBorders(true)
     .Paging(p => p.Enabled(false))
