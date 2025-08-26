@@ -15,11 +15,12 @@ function EditingForm(): JSX.Element {
     stylingMode: 'outlined',
     text: 'Save',
     onClick: (): void => {
-      if (grid.current) {
-        grid.current.instance().saveEditData().catch((error: unknown) => {
-          console.error('Save error:', error);
-        });
-      }
+      const instance = grid.current?.instance();
+      if (!instance) return;
+
+      instance.saveEditData().catch((error: unknown) => {
+        console.error('Save error:', error);
+      });
     },
   }), []);
   const cancelOptions = useMemo((): object => ({
@@ -27,23 +28,24 @@ function EditingForm(): JSX.Element {
     stylingMode: 'outlined',
     text: 'Cancel',
     onClick: (): void => {
-      if (grid.current) {
-        grid.current.instance().cancelEditData();
-      }
+      const instance = grid.current?.instance();
+      if (!instance) return;
+
+      instance.cancelEditData();
     },
   }), []);
   const copyOptions = useMemo((): object => ({
     text: 'Copy Data',
     stylingMode: 'outlined',
     onClick: (): void => {
-      if (grid.current) {
-        const gridInstance = grid.current.instance();
-        const rowKey = gridInstance.option('editing.editRowKey');
-        const rowIndex = gridInstance.getRowIndexByKey(rowKey);
-        const name = gridInstance.cellValue(rowIndex, 'FirstName');
-        const message = name ? `${name}'s ` : '';
-        notify(`Copy ${message}data`);
-      }
+      const instance = grid.current?.instance();
+      if (!instance) return;
+
+      const rowKey = instance.option('editing.editRowKey');
+      const rowIndex = instance.getRowIndexByKey(rowKey);
+      const name = instance.cellValue(rowIndex, 'FirstName');
+      const message = name ? `${name}'s ` : '';
+      notify(`Copy ${message}data`);
     },
   }), []);
 
