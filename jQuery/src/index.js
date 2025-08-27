@@ -1,10 +1,19 @@
 $(() => {
-  let count = 0;
-  $('#btn').dxButton({
-    text: `Click count: ${count}`,
-    onClick(e) {
-      count += 1;
-      e.component.option('text', `Click count: ${count}`);
-    },
+  function createTabItemTemplate(contentID) {
+    return $('<div>').attr('id', contentID).addClass('tab-item-content');
+  }
+  $('#tabPanel').dxTabPanel({
+    deferRendering: false,
+    items: [{
+      title: 'Popup',
+      template() {
+        return createTabItemTemplate('grid-popup');
+      },
+    }, {
+      title: 'Form',
+      template() {
+        return createTabItemTemplate('grid-form');
+      },
+    }],
   });
 });

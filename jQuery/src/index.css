@@ -1,4 +1,17 @@
 .demo-container {
-    margin: 50px;
-    width: 90vw;
+  margin: 50px;
+  width: 90vw;
+}
+
+.tab-item-content {
+  margin: auto;
+}
+
+.demo-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#grid-form .dx-datagrid-form-buttons-container {
+  display: none;
 }

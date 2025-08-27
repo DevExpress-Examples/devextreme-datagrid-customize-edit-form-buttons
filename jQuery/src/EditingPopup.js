@@ -1,5 +1,5 @@
 $(() => {
-  const grid = $('#gridPopup').dxDataGrid({
+  const grid = $('#grid-popup').dxDataGrid({
     dataSource: getEmployees(),
     keyExpr: 'ID',
     showBorders: true,
