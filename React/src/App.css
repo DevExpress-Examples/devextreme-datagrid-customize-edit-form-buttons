@@ -2,3 +2,7 @@
   margin: 50px;
   width: 90vw;
 }
+
+#grid-form .dx-datagrid-form-buttons-container {  
+  display: none  
+}
