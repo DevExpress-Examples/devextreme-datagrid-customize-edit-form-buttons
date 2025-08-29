@@ -69,7 +69,7 @@ function EditingForm(): JSX.Element {
 
   return (<DataGrid
     ref={grid}
-    id="gridForm"
+    id="grid-form"
     dataSource={employees}
     keyExpr='ID'
     showBorders={true}>

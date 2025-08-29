@@ -12,29 +12,29 @@
     [allowDeleting]="true"
     [allowAdding]="true"
   >
-    <dxo-popup [width]="500" [height]="400">
-      <dxi-toolbar-item
+    <dxo-data-grid-popup [width]="500" [height]="400">
+      <dxi-data-grid-toolbar-item
         toolbar="bottom"
         widget="dxButton"
         location="after"
         [options]="successButtonOptions"
       >
-      </dxi-toolbar-item>
-      <dxi-toolbar-item
+      </dxi-data-grid-toolbar-item>
+      <dxi-data-grid-toolbar-item
         toolbar="bottom"
         widget="dxButton"
         location="after"
         [options]="cancelButtonOptions"
       >
-      </dxi-toolbar-item>
-      <dxi-toolbar-item
+      </dxi-data-grid-toolbar-item>
+      <dxi-data-grid-toolbar-item
         toolbar="bottom"
         widget="dxButton"
         location="before"
         [options]="copyButtonOptions"
       >
-      </dxi-toolbar-item>
-    </dxo-popup>
+      </dxi-data-grid-toolbar-item>
+    </dxo-data-grid-popup>
   </dxo-editing>
   <dxi-column dataField="Prefix" caption="Title" [width]="80"></dxi-column>
   <dxi-column dataField="FirstName"></dxi-column>
