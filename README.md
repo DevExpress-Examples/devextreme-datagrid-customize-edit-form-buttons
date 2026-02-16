@@ -50,7 +50,7 @@ It is necessary to replace built-in Save and Cancel buttons. The solutions for P
 - [DataGrid Form](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/#form)
 - [Save, Cancel, and Custom Buttons](https://js.devexpress.com/Documentation/Guide/UI_Components/DataGrid/Editing/#Customize_Edit_Form/Save_Cancel_and_Custom_Buttons)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-datagrid-customize-edit-form-buttons&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-datagrid-customize-edit-form-buttons&~~~was_helpful=no)
 
