@@ -1,10 +1,11 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { DxDataGridComponent } from 'devextreme-angular';
+import {DxDataGridComponent, DxTabPanelModule, DxDataGridModule, DxToolbarModule} from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import { Employee } from '../app.service';
 
 @Component({
   selector: 'grid-form',
+  imports: [DxTabPanelModule, DxDataGridModule, DxToolbarModule],
   templateUrl: './grid-form.component.html',
   styleUrls: ['./grid-form.component.scss'],
 })

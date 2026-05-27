@@ -1,10 +1,11 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { DxDataGridComponent } from 'devextreme-angular';
+import {DxDataGridComponent, DxTabPanelModule, DxDataGridModule, DxToolbarModule} from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import { Employee } from '../app.service';
 
 @Component({
   selector: 'grid-popup',
+  imports: [DxTabPanelModule, DxDataGridModule, DxToolbarModule],
   templateUrl: './grid-popup.component.html',
   styleUrls: ['./grid-popup.component.scss'],
 })

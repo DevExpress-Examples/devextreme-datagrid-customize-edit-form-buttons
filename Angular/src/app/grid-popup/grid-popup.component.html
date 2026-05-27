@@ -5,8 +5,8 @@
   keyExpr="ID"
   [showBorders]="true"
 >
-  <dxo-paging [enabled]="true"></dxo-paging>
-  <dxo-editing
+  <dxo-data-grid-paging [enabled]="true"></dxo-data-grid-paging>
+  <dxo-data-grid-editing
     mode="popup"
     [allowUpdating]="true"
     [allowDeleting]="true"
@@ -35,11 +35,11 @@
       >
       </dxi-data-grid-toolbar-item>
     </dxo-data-grid-popup>
-  </dxo-editing>
-  <dxi-column dataField="Prefix" caption="Title" [width]="80"></dxi-column>
-  <dxi-column dataField="FirstName"></dxi-column>
-  <dxi-column dataField="LastName"></dxi-column>
-  <dxi-column dataField="Position" [width]="130"></dxi-column>
-  <dxi-column dataField="Address"></dxi-column>
-  <dxi-column dataField="BirthDate" dataType="date" [width]="125"></dxi-column>
+  </dxo-data-grid-editing>
+  <dxi-data-grid-column dataField="Prefix" caption="Title" [width]="80"></dxi-data-grid-column>
+  <dxi-data-grid-column dataField="FirstName"></dxi-data-grid-column>
+  <dxi-data-grid-column dataField="LastName"></dxi-data-grid-column>
+  <dxi-data-grid-column dataField="Position" [width]="130"></dxi-data-grid-column>
+  <dxi-data-grid-column dataField="Address"></dxi-data-grid-column>
+  <dxi-data-grid-column dataField="BirthDate" dataType="date" [width]="125"></dxi-data-grid-column>
 </dx-data-grid>
