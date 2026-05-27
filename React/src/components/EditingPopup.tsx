@@ -3,7 +3,7 @@ import { ToolbarItem } from 'devextreme-react/popup';
 import { useRef, useMemo } from 'react';
 import type { DataGridRef } from 'devextreme-react/data-grid';
 import notify from 'devextreme/ui/notify';
-import service from '../data';
+import service from '../data.tsx';
 
 const employees = service.getData();
 

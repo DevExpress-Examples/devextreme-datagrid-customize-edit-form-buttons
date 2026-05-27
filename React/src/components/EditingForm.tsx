@@ -4,7 +4,7 @@ import { Item } from 'devextreme-react/form';
 import notify from 'devextreme/ui/notify';
 import { useCallback, useMemo, useRef } from 'react';
 import type { DataGridRef } from 'devextreme-react/data-grid';
-import service from '../data';
+import service from '../data.tsx';
 
 const employees = service.getData();
 

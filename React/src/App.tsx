@@ -1,8 +1,8 @@
 import './App.css';
 import 'devextreme/dist/css/dx.material.blue.light.compact.css';
 import TabPanel, { Item } from 'devextreme-react/tab-panel';
-import EditingPopup from './components/EditingPopup';
-import EditingForm from './components/EditingForm';
+import EditingPopup from './components/EditingPopup.tsx';
+import EditingForm from './components/EditingForm.tsx';
 
 function App(): JSX.Element {
   return (
