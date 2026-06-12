@@ -28,5 +28,10 @@
     "devextreme-dist": "26.1.2-beta",
     "jquery": "^3.7.1"
   },
-  "type": "module"
+  "type": "module",
+  "overrides": {
+    "devextreme-aspnet-data": {
+      "devextreme": "$devextreme"
+    }
+  }
 }
