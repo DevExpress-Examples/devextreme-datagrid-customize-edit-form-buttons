@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {DxDataGridComponent, DxTabPanelModule, DxDataGridModule, DxToolbarModule} from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import { Employee } from '../app.service';
@@ -7,6 +7,7 @@ import { Employee } from '../app.service';
   selector: 'grid-form',
   imports: [DxTabPanelModule, DxDataGridModule, DxToolbarModule],
   templateUrl: './grid-form.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./grid-form.component.scss'],
 })
 export class GridFormComponent {
